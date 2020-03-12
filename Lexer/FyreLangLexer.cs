@@ -34,7 +34,7 @@ namespace Lexer {
                     (Endl, @"(?!.)"),
 
                     (Negative, @"-"),
-                    (Positive, @"+"),
+                    (Positive, @"\+"),
 
                     (OParen, @"\("),
                     (CParen, @"\)"),
