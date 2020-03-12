@@ -11,9 +11,13 @@ namespace Lexer {
         Unknown = 0,
         EOF,
         Endl,
+        Space,
 
         Negative,
         Positive,
+
+        Set,
+        Compare,
 
         OParen,
         CParen,
@@ -31,10 +35,14 @@ namespace Lexer {
         public FyreLangLexer() {
             AddRules(
                 new List<LexerRule<FyreLangToken>>() {
-                    (Endl, @"(?!.)"),
+                    //(Endl, @"(?!.)"),
+                    (Space, @"\s"),
 
                     (Negative, @"-"),
                     (Positive, @"\+"),
+
+                    (Set, @"="),
+                    (Compare, @"=="),
 
                     (OParen, @"\("),
                     (CParen, @"\)"),

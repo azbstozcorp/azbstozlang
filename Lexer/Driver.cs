@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace Lexer {
     class Driver {
-        static string code = "";
+        static string code =
+            "a = 1 " +
+            "b = 4 " +
+            "c = a == b"
+            ;
 
         static void Main(string[] args) {
             var stream = new MemoryStream();
@@ -17,7 +21,7 @@ namespace Lexer {
             stream.Position = 0;
             var reader = new StreamReader(stream);
 
-            FyreLangLexer lexer = new FyreLangLexer();
+            FyreLangLexer lexer = new FyreLangLexer() { Verbose = false };
             lexer.Initialize(reader);
             LexerToken<FyreLangToken>[] tokens = lexer.TokenStream().ToArray();
 
