@@ -10,6 +10,7 @@ namespace Lexer {
     public enum FyreLangToken {
         Unknown = 0,
         EOF,
+        Endl,
 
         Negative,
         Positive,
@@ -22,12 +23,16 @@ namespace Lexer {
         CBrace,
 
         Integer,
+
+        Name,
     }
 
     public class FyreLangLexer : LexerBase<FyreLangToken> {
         public FyreLangLexer() {
             AddRules(
                 new List<LexerRule<FyreLangToken>>() {
+                    (Endl, @"(?!.)"),
+
                     (Negative, @"-"),
                     (Positive, @"+"),
 
@@ -39,6 +44,8 @@ namespace Lexer {
                     (CBrace, @"\}"),
 
                     (Integer, @"\b\d+\b"),
+
+                    (Name, @"\b[a-z]+\b"),
                 });
         }
     }
